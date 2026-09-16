@@ -150,3 +150,173 @@ figcaption { margin-top: 9px; color: var(--ink-soft); font-size: 11px; line-heig
   .content-section { padding: 58px 0; }
   .site-footer { align-items: flex-start; flex-wrap: wrap; padding: 20px 14px; }
 }
+
+/* Mobile portrait-first layout: full-screen game, board fills width */
+@media (max-width: 768px) and (orientation: portrait), (max-height: 820px) and (orientation: portrait) {
+  html {
+    height: 100%;
+    overscroll-behavior: none;
+  }
+
+  body {
+    min-height: 100%;
+    min-height: 100dvh;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .site-header {
+    width: 100%;
+    min-height: auto;
+    padding: calc(10px + env(safe-area-inset-top, 0px)) 16px 8px;
+    border-bottom: 0;
+    justify-content: center;
+  }
+
+  .brand em,
+  .github-link {
+    display: none;
+  }
+
+  .brand {
+    font-size: 14px;
+    letter-spacing: .08em;
+  }
+
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .game-page {
+    min-height: 0;
+    height: calc(100dvh - 52px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    padding: 8px 10px calc(10px + env(safe-area-inset-bottom, 0px));
+    place-items: stretch;
+  }
+
+  .game-page .game-shell {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .score-strip {
+    flex: 0 0 auto;
+    grid-template-columns: 1fr 1.25fr 1fr;
+    gap: 6px;
+    padding: 0 2px 10px;
+  }
+
+  .score-strip strong {
+    font-size: 22px;
+  }
+
+  .timer-cell strong {
+    font-size: 26px;
+  }
+
+  .timer-cell i {
+    width: 100%;
+    max-width: none;
+    margin-top: 6px;
+  }
+
+  .board-frame {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    border-width: 4px;
+  }
+
+  .board {
+    flex: 1 1 auto;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 17 / 10;
+    cursor: default;
+  }
+
+  .cell b {
+    font-size: clamp(8px, 2.55vw, 16px);
+  }
+
+  .board-feedback {
+    flex: 0 0 auto;
+    min-height: 18px;
+    margin: 8px 2px 2px;
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .game-controls {
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(23, 59, 45, .16);
+  }
+
+  .game-controls button {
+    min-height: 44px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  #hint,
+  #reset {
+    grid-row: 1;
+    font-size: 14px;
+  }
+
+  #pause,
+  #pale,
+  #sound {
+    grid-row: 2;
+    min-height: 38px;
+    font-size: 12px;
+  }
+
+  #pause { grid-column: 1; }
+  #pale { grid-column: 2; }
+  #sound { grid-column: 1 / -1; }
+
+  .keyboard-help,
+  .site-footer {
+    display: none;
+  }
+
+  .game-overlay {
+    padding: 16px;
+  }
+
+  .game-overlay h1,
+  .game-overlay h2 {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+
+  .primary-button {
+    min-height: 48px;
+    padding: 0 20px;
+    font-size: 14px;
+  }
+}
+
+/* Standalone / home-screen mode */
+@media (display-mode: standalone), (display-mode: fullscreen) {
+  .site-header {
+    padding-top: calc(12px + env(safe-area-inset-top, 0px));
+  }
+
+  .github-link {
+    display: none;
+  }
+}
